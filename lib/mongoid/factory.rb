@@ -7,8 +7,9 @@ module Mongoid
 
     def replace_type(type)	
       if type.include?('Mongo')  
-        
+        type.sub('Mongo', '')
       else
+        type
       end    
     end	
 
@@ -25,7 +26,7 @@ module Mongoid
     def build(klass, attributes = nil, options = {})
       type = (attributes || {})["_type"]
       if type && klass._types.include?(type)
-        type.constantize.new(attributes, options)
+        replace_type(type).constantize.new(attributes, options)
       else
         klass.new(attributes, options)
       end
@@ -46,7 +47,7 @@ module Mongoid
       if type.blank?
         klass.instantiate(attributes, criteria_instance_id)
       else
-        type.camelize.constantize.instantiate(attributes, criteria_instance_id)
+        replace_type(type).camelize.constantize.instantiate(attributes, criteria_instance_id)
       end
     end
   end
