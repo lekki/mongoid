@@ -5,6 +5,13 @@ module Mongoid
   module Factory
     extend self
 
+    def replace_type(type)	
+      if type.include?('Mongo')  
+        
+      else
+      end    
+    end	
+
     # Builds a new +Document+ from the supplied attributes.
     #
     # @example Build the document.
