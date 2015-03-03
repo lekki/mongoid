@@ -312,7 +312,7 @@ module Mongoid
       #
       # @since 1.0.0
       def _types
-        @_type ||= (descendants + [ self ]).uniq.map { |t| t.to_s }
+        @_type ||= (descendants + [ self ] +  ( self.name == 'Checkin' ? [ 'MongoCheckin'] : [] )   ).uniq.map { |t| t.to_s }
       end
 
       # Set the i18n scope to overwrite ActiveModel.
