@@ -8,7 +8,7 @@ module Mongoid
     def replace_type(type)	
 
       if ['Checkin', 'FoursquareItem', 'InstagramCheckinItem'].include?(type)   
-        type.sub('Mongo', '')
+        'Mongo'+type
       else
         type
       end    
