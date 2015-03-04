@@ -312,7 +312,16 @@ module Mongoid
       #
       # @since 1.0.0
       def _types
-        @_type ||= (descendants + [ self ] +  ( self.name.start_with?('Mongo') ? [self.name[5..-1]] : [] ) ).uniq.map { |t| t.to_s }
+        @_type ||= begin
+          tmp  = []
+          (descendants + [self]).each do |c| 
+            tmp << c
+            if c.name.start_with?('Mongo')
+              tmp << self.name[5..-1]
+            end  
+          end  
+          tmp.uniq.map { |t| t.to_s }
+        end  
       end
 
       # Set the i18n scope to overwrite ActiveModel.
