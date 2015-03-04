@@ -317,7 +317,7 @@ module Mongoid
           (descendants + [self]).each do |c| 
             tmp << c
             if c.name.start_with?('Mongo')
-              tmp << self.name[5..-1]
+              tmp << c.name[5..-1]
             end  
           end  
           tmp.uniq.map { |t| t.to_s }
