@@ -6,7 +6,7 @@ module Mongoid
     extend self
 
     def replace_type(type)	
-      if ['Checkin'].include?(type) 
+      if ['Checkin', 'FoursquareItem'].include?(type) 
         'Mongo'+type
       else
         type
