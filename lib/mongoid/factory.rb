@@ -8,7 +8,7 @@ module Mongoid
     def replace_type(type)	
 
       if ['Checkin', 'FoursquareItem', 'InstagramCheckinItem', 'FacebookCheckinItem', 'FacebookImageCheckinItem', 'FoursquareImageItem', 
-          'Text', 'Thought', 'FacebookStatusItem', 'TwitterItem', 'Image', 'TwitterImageItem', 'DropboxImageItem', 'InstagramItem'].include?(type)   
+          'FacebookImageItem','Text', 'Thought', 'FacebookStatusItem', 'TwitterItem', 'Image', 'TwitterImageItem', 'DropboxImageItem', 'InstagramItem'].include?(type)   
         'Mongo'+type
       else
         type
